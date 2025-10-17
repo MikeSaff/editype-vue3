@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "users": "Users",
+    "publications": "Publications"
+  },
+  "users": {
+    "title": "Users Management",
+    "createNew": "Create New User",
+    "edit": "Edit",
+    "delete": "Delete",
+    "email": "Email",
+    "password": "Password",
+    "roles": "Roles",
+    "createdAt": "Created At",
+    "actions": "Actions",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirmDelete": "Are you sure you want to delete this user?"
+  },
+  "publications": {
+    "title": "Publications",
+    "createNew": "Create New Publication",
+    "edit": "Edit",
+    "delete": "Delete",
+    "titleField": "Title",
+    "doi": "DOI",
+    "createdAt": "Created At",
+    "actions": "Actions",
+    "languages": "Languages",
+    "metadata": "Metadata",
+    "text": "Text",
+    "preview": "Preview",
+    "export": "Export"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "processing": "Processing authentication...",
+    "loginWithEditorum": "Login with Editorum"
+  },
+  "editor": {
+    "title": "Article Editor",
+    "save": "Save",
+    "autoSave": "Auto-saving...",
+    "saved": "Saved",
+    "locked": "Locked by",
+    "unlock": "Unlock",
+    "preview": "Preview",
+    "addLanguage": "Add Language"
+  }
+}
+

@@ -1,0 +1,179 @@
+% Scientific Article Template for Editype
+\documentclass[12pt,a4paper]{article}
+
+% Encoding and fonts
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{$if(lang)$$lang$$else$english$endif$}
+$if(lang-ru)$
+\setotherlanguage{russian}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+\setmonofont{Liberation Mono}
+$else$
+\setmainfont{Times New Roman}
+$endif$
+
+% Page layout
+\usepackage[a4paper, margin=2.5cm]{geometry}
+
+% Mathematical packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{float}
+\graphicspath{{./images/}}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+
+% Links and references
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    citecolor=green,
+    pdfauthor={$if(authors)$$authors$$endif$},
+    pdftitle={$if(title)$$title$$endif$},
+}
+
+% Bibliography
+\usepackage[backend=biber,style=$if(citation-style)$$citation-style$$else$gost-numeric$endif$,sorting=none]{biblatex}
+$if(bibliography)$
+\addbibresource{$bibliography$}
+$endif$
+
+% Code listings
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!10}
+}
+
+% Chemistry (if needed)
+\usepackage[version=4]{mhchem}
+
+% SI Units
+\usepackage{siunitx}
+
+% Enhanced enumerate
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+% Section formatting
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Line spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% Header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{$if(journal-short)$$journal-short$$endif$}
+\fancyhead[R]{$if(year)$$year$$endif$}
+\fancyfoot[C]{\thepage}
+
+% DOI command
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:#1}}
+
+% Custom theorem environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{note}{Note}[section]
+
+% Abstract customization
+\renewcommand{\abstractname}{$if(abstract-title)$$abstract-title$$else$Abstract$endif$}
+
+% Keywords command
+\newcommand{\keywords}[1]{\par\noindent\textbf{Keywords:} #1}
+
+% Metadata
+\title{$if(title)$$title$$else$Untitled$endif$}
+\author{$if(authors)$$for(authors)$$authors$$sep$ \and $endfor$$endif$}
+\date{$if(date)$$date$$else$\today$endif$}
+
+% Document begins
+\begin{document}
+
+% Title page
+\maketitle
+
+% DOI
+$if(doi)$
+\noindent\textbf{DOI:} \doi{$doi$}
+\par\vspace{0.5em}
+$endif$
+
+% Pages
+$if(first-page)$
+\noindent\textbf{Pages:} $first-page$--$last-page$
+\par\vspace{1em}
+$endif$
+
+% Abstract
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+% Keywords
+$if(keywords)$
+\keywords{$keywords$}
+\par\vspace{1em}
+$endif$
+
+% Table of contents (optional)
+$if(toc)$
+\tableofcontents
+\newpage
+$endif$
+
+% Main content
+$body$
+
+% Bibliography
+$if(bibliography)$
+\newpage
+\printbibliography[title={$if(references-title)$$references-title$$else$References$endif$}]
+$endif$
+
+% Appendices
+$if(appendices)$
+\newpage
+\appendix
+$for(appendices)$
+\section{$appendices.title$}
+$appendices.content$
+$endfor$
+$endif$
+
+\end{document}
+
+

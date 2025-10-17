@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "users": "Пользователи",
+    "publications": "Публикации"
+  },
+  "users": {
+    "title": "Управление пользователями",
+    "createNew": "Создать пользователя",
+    "edit": "Редактировать",
+    "delete": "Удалить",
+    "email": "Email",
+    "password": "Пароль",
+    "roles": "Роли",
+    "createdAt": "Дата создания",
+    "actions": "Действия",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "confirmDelete": "Вы уверены, что хотите удалить этого пользователя?"
+  },
+  "publications": {
+    "title": "Публикации",
+    "createNew": "Создать публикацию",
+    "edit": "Редактировать",
+    "delete": "Удалить",
+    "titleField": "Заголовок",
+    "doi": "DOI",
+    "createdAt": "Дата создания",
+    "actions": "Действия",
+    "languages": "Языки",
+    "metadata": "Метаданные",
+    "text": "Текст",
+    "preview": "Предпросмотр",
+    "export": "Экспорт"
+  },
+  "auth": {
+    "login": "Вход",
+    "register": "Регистрация",
+    "logout": "Выход",
+    "email": "Email",
+    "password": "Пароль",
+    "processing": "Обработка аутентификации...",
+    "loginWithEditorum": "Войти через Editorum"
+  },
+  "editor": {
+    "title": "Редактор статьи",
+    "save": "Сохранить",
+    "autoSave": "Автосохранение...",
+    "saved": "Сохранено",
+    "locked": "Заблокировано",
+    "unlock": "Разблокировать",
+    "preview": "Предпросмотр",
+    "addLanguage": "Добавить язык"
+  }
+}
+

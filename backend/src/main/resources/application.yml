@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: znan-backend
+  
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/editype}
+      database: editype
+  
+  security:
+    jwt:
+      secret: ${JWT_SECRET:editype-secret-key-change-in-production-with-at-least-256-bits}
+      expiration: 86400000 # 24 hours in milliseconds
+
+# Editorum integration
+editorum:
+  api:
+    base-url: ${EDITORUM_BASE_URL:http://znan.io}
+  oauth:
+    client-id: ${EDITORUM_CLIENT_ID:your-client-id}
+    client-secret: ${EDITORUM_CLIENT_SECRET:your-client-secret}
+    redirect-uri: ${EDITORUM_REDIRECT_URI:http://localhost:3000/auth/callback}
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+logging:
+  level:
+    com.editype: DEBUG
+    org.springframework.data.mongodb: DEBUG
+    org.springframework.security: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+

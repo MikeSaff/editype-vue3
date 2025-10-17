@@ -1,0 +1,48 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# CI/CD
+.github
+.gitlab-ci.yml
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs
+
+# Node modules
+node_modules
+npm-debug.log*
+
+# Build artifacts
+target
+dist
+build
+*.jar
+*.war
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Cursor
+.cursor
+
+
+
+

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
+<article xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML" article-type="research-article" dtd-version="1.2">
+  <front>
+    <journal-meta>
+      <journal-id journal-id-type="publisher-id">$journal-id$</journal-id>
+      <journal-title-group>
+        <journal-title>$journal-title$</journal-title>
+      </journal-title-group>
+      <issn pub-type="epub">$issn-electronic$</issn>
+      <issn pub-type="ppub">$issn-print$</issn>
+      <publisher>
+        <publisher-name>$publisher-name$</publisher-name>
+      </publisher>
+    </journal-meta>
+    
+    <article-meta>
+      <article-id pub-id-type="doi">$doi$</article-id>
+      <article-id pub-id-type="publisher-id">$article-id$</article-id>
+      
+      <article-categories>
+        <subj-group subj-group-type="heading">
+          <subject>$subject$</subject>
+        </subj-group>
+      </article-categories>
+      
+      <title-group>
+        <article-title>$title$</article-title>
+        $if(subtitle)$
+        <subtitle>$subtitle$</subtitle>
+        $endif$
+        $if(title-trans)$
+        <trans-title-group xml:lang="$title-trans-lang$">
+          <trans-title>$title-trans$</trans-title>
+        </trans-title-group>
+        $endif$
+      </title-group>
+      
+      <contrib-group>
+        $for(authors)$
+        <contrib contrib-type="author">
+          <name>
+            <surname>$authors.surname$</surname>
+            <given-names>$authors.given-names$</given-names>
+          </name>
+          $if(authors.email)$
+          <email>$authors.email$</email>
+          $endif$
+          $if(authors.orcid)$
+          <contrib-id contrib-id-type="orcid">$authors.orcid$</contrib-id>
+          $endif$
+          $if(authors.affiliation)$
+          <xref ref-type="aff" rid="aff$authors.aff-id$">$authors.aff-id$</xref>
+          $endif$
+        </contrib>
+        $endfor$
+      </contrib-group>
+      
+      $if(affiliations)$
+      $for(affiliations)$
+      <aff id="aff$affiliations.id$">
+        <institution>$affiliations.institution$</institution>
+        $if(affiliations.city)$
+        <city>$affiliations.city$</city>
+        $endif$
+        $if(affiliations.country)$
+        <country>$affiliations.country$</country>
+        $endif$
+      </aff>
+      $endfor$
+      $endif$
+      
+      <pub-date pub-type="epub">
+        <year>$year$</year>
+        $if(month)$<month>$month$</month>$endif$
+        $if(day)$<day>$day$</day>$endif$
+      </pub-date>
+      
+      $if(volume)$<volume>$volume$</volume>$endif$
+      $if(issue)$<issue>$issue$</issue>$endif$
+      
+      $if(first-page)$
+      <fpage>$first-page$</fpage>
+      <lpage>$last-page$</lpage>
+      $endif$
+      
+      <permissions>
+        <copyright-statement>$copyright-statement$</copyright-statement>
+        <copyright-year>$copyright-year$</copyright-year>
+        <copyright-holder>$copyright-holder$</copyright-holder>
+        <license license-type="$license-type$">
+          <license-p>$license-text$</license-p>
+        </license>
+      </permissions>
+      
+      <abstract xml:lang="$abstract-lang$">
+        <p>$abstract$</p>
+      </abstract>
+      
+      $if(abstract-trans)$
+      <trans-abstract xml:lang="$abstract-trans-lang$">
+        <p>$abstract-trans$</p>
+      </trans-abstract>
+      $endif$
+      
+      <kwd-group xml:lang="$keywords-lang$">
+        <title>Keywords</title>
+        $for(keywords)$
+        <kwd>$keywords$</kwd>
+        $endfor$
+      </kwd-group>
+      
+      $if(keywords-trans)$
+      <kwd-group xml:lang="$keywords-trans-lang$">
+        <title>$keywords-trans-title$</title>
+        $for(keywords-trans)$
+        <kwd>$keywords-trans$</kwd>
+        $endfor$
+      </kwd-group>
+      $endif$
+      
+      $if(funding)$
+      <funding-group>
+        <funding-statement>$funding$</funding-statement>
+      </funding-group>
+      $endif$
+    </article-meta>
+  </front>
+  
+  <body>
+    $body$
+  </body>
+  
+  <back>
+    $if(references)$
+    <ref-list>
+      <title>References</title>
+      $for(references)$
+      <ref id="ref$references.id$">
+        <element-citation publication-type="$references.type$">
+          <person-group person-group-type="author">
+            $for(references.authors)$
+            <name>
+              <surname>$references.authors.surname$</surname>
+              <given-names>$references.authors.given-names$</given-names>
+            </name>
+            $endfor$
+          </person-group>
+          <article-title>$references.title$</article-title>
+          $if(references.journal)$
+          <source>$references.journal$</source>
+          $endif$
+          $if(references.year)$
+          <year>$references.year$</year>
+          $endif$
+          $if(references.volume)$
+          <volume>$references.volume$</volume>
+          $endif$
+          $if(references.issue)$
+          <issue>$references.issue$</issue>
+          $endif$
+          $if(references.pages)$
+          <fpage>$references.first-page$</fpage>
+          <lpage>$references.last-page$</lpage>
+          $endif$
+          $if(references.doi)$
+          <pub-id pub-id-type="doi">$references.doi$</pub-id>
+          $endif$
+          $if(references.url)$
+          <ext-link ext-link-type="uri" xlink:href="$references.url$">$references.url$</ext-link>
+          $endif$
+        </element-citation>
+      </ref>
+      $endfor$
+    </ref-list>
+    $endif$
+  </back>
+</article>
+
+

@@ -1,0 +1,78 @@
+services:
+  # MongoDB database
+  mongodb:
+    image: mongo:7.0
+    container_name: editype-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+      MONGO_INITDB_DATABASE: editype
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - editype-network
+
+  # Redis cache
+  redis:
+    image: redis:7-alpine
+    container_name: editype-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - editype-network
+
+  # Backend Spring Boot application
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: editype-backend
+    restart: unless-stopped
+    environment:
+      MONGODB_URI: mongodb://admin:admin123@mongodb:27017/editype?authSource=admin
+      JWT_SECRET: editype-secret-key-change-in-production-with-at-least-256-bits
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - editype-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Frontend Vue.js application with Nginx
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: editype-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - editype-network
+
+volumes:
+  mongodb_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  editype-network:
+    driver: bridge
+
