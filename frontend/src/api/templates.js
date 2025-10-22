@@ -2,18 +2,18 @@ import axios from './axios'
 
 export const templatesApi = {
   // Получение всех активных шаблонов
-  getAllTemplates: () => axios.get('/api/templates'),
+  getAllTemplates: () => axios.get('/templates'),
   
   // Получение шаблонов по типу документа
   getTemplatesByDocumentType: (documentTypeId) => 
-    axios.get(`/api/templates/by-document-type/${documentTypeId}`),
+    axios.get(`/templates/by-document-type/${documentTypeId}`),
   
   // Получение шаблона по умолчанию для типа документа
   getDefaultTemplate: (documentTypeId) => 
-    axios.get(`/api/templates/default/${documentTypeId}`),
+    axios.get(`/templates/default/${documentTypeId}`),
   
   // Получение шаблона по ID
-  getTemplate: (id) => axios.get(`/api/templates/${id}`),
+  getTemplate: (id) => axios.get(`/templates/${id}`),
   
   // Создание нового шаблона (только админы)
   createTemplate: (templateData) => {
@@ -29,7 +29,7 @@ export const templatesApi = {
         }
       }
     })
-    return axios.post('/api/templates', formData, {
+    return axios.post('/templates', formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     })
   },
@@ -48,16 +48,16 @@ export const templatesApi = {
         }
       }
     })
-    return axios.put(`/api/templates/${id}`, formData, {
+    return axios.put(`/templates/${id}`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     })
   },
   
   // Удаление шаблона (только админы)
-  deleteTemplate: (id) => axios.delete(`/api/templates/${id}`),
+  deleteTemplate: (id) => axios.delete(`/templates/${id}`),
   
   // Поиск шаблонов по имени
-  searchTemplates: (name) => axios.get(`/api/templates/search?name=${encodeURIComponent(name)}`),
+  searchTemplates: (name) => axios.get(`/templates/search?name=${encodeURIComponent(name)}`),
   
   // Импорт документа (HTML, LaTeX, DOCX, ZIP) как шаблона
   importDocument: (file, name, documentTypeId) => {
@@ -66,7 +66,7 @@ export const templatesApi = {
     if (name) formData.append('name', name)
     if (documentTypeId) formData.append('documentTypeId', documentTypeId)
     
-    return axios.post('/api/templates/import', formData, {
+    return axios.post('/templates/import', formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     })
   }
