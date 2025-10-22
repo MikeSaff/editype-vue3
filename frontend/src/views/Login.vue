@@ -103,13 +103,15 @@ const handleLocalLogin = async () => {
   try {
     const result = await authStore.login(localLogin.value)
     if (result.success) {
-      router.push('/')
+      console.log('Login successful, redirecting...')
+      // Force reload to ensure store is initialized
+      window.location.href = '/articles'
     } else {
-      alert(result.error)
+      alert(result.error || 'Ошибка входа')
     }
   } catch (error) {
     console.error('Ошибка локального входа:', error)
-    alert('Ошибка входа в систему')
+    alert('Ошибка входа в систему: ' + (error.message || error))
   } finally {
     loading.value = false
   }

@@ -48,12 +48,19 @@ const error = ref(null)
 
 const handleRegister = async () => {
   error.value = null
-  const result = await authStore.register(userData.value)
-  
-  if (result.success) {
-    router.push('/')
-  } else {
-    error.value = result.error
+  try {
+    const result = await authStore.register(userData.value)
+    
+    if (result.success) {
+      console.log('Registration successful, redirecting...')
+      // Force reload to ensure store is initialized
+      window.location.href = '/articles'
+    } else {
+      error.value = result.error || 'Ошибка регистрации'
+    }
+  } catch (err) {
+    console.error('Ошибка регистрации:', err)
+    error.value = err.message || 'Произошла ошибка при регистрации'
   }
 }
 </script>

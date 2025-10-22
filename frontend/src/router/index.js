@@ -33,7 +33,13 @@ const router = createRouter({
     {
       path: '/editor/new',
       name: 'new-article',
-      component: () => import('@/views/CreateArticle.vue'),
+      component: () => import('@/views/CreateArticleSimple.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/create',
+      name: 'create-article',
+      component: () => import('@/views/CreateArticleSimple.vue'),
       meta: { requiresAuth: true }
     },
     {
